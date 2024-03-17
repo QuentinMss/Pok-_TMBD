@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="movie">
+        <script>
+            function fetchMovie(movie, api_key) {
+                return fetch('https://api.themoviedb.org/3/movie/' + movie + '?api_key=' + api_key + '&language=fr-FR')
+                .then((response) => response.json())
+            }
+            async function displayMovie(movie) {
+            const api_key = ''
+            //500cef75dafe7f6308e1caef8fd85d11
+            //f28faa5fe6dbd0ebe29a51c24778f344
+            const data = await fetchMovie(movie, api_key)
+            document.querySelector('#movie').innerHTML = `
+            <h1> ${data.title}</h1>
+            <img src="https://image.tmdb.org/t/p/w500/${data.poster_path}" alt="${data.title}">
+            `
+            }
+            displayMovie('693134')
+        </script>
+    </div>
+    <!-- je ne comprends pas la commu star wars qui n'aime pas les 1;2;3, le 1895 reste un tres bon film qui fait quand meme mal a le République-->
+</body>
+</html>
